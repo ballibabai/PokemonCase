@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="DetailCollectionViewCell" customModule="PokeCase" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="220" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="220" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xib-0Z-GCx">
+                        <rect key="frame" x="8" y="8" width="204" height="142"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kaS-bh-rb6">
+                                <rect key="frame" x="0.0" y="0.0" width="204" height="142"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="kaS-bh-rb6" firstAttribute="top" secondItem="Xib-0Z-GCx" secondAttribute="top" id="BzI-VG-p9g"/>
+                            <constraint firstItem="kaS-bh-rb6" firstAttribute="leading" secondItem="Xib-0Z-GCx" secondAttribute="leading" id="HF6-ya-RWx"/>
+                            <constraint firstAttribute="trailing" secondItem="kaS-bh-rb6" secondAttribute="trailing" id="Zyc-fB-WPh"/>
+                            <constraint firstAttribute="bottom" secondItem="kaS-bh-rb6" secondAttribute="bottom" id="sgy-6P-H7H"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Xib-0Z-GCx" secondAttribute="trailing" constant="8" id="04H-vG-VuV"/>
+                <constraint firstAttribute="bottom" secondItem="Xib-0Z-GCx" secondAttribute="bottom" id="Neq-4f-pd8"/>
+                <constraint firstItem="Xib-0Z-GCx" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="dYe-BG-y6w"/>
+                <constraint firstItem="Xib-0Z-GCx" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="vSY-Pr-Rh8"/>
+            </constraints>
+            <size key="customSize" width="220" height="150"/>
+            <connections>
+                <outlet property="containerView" destination="Xib-0Z-GCx" id="3B7-Oe-ZF3"/>
+                <outlet property="pokeImageView" destination="kaS-bh-rb6" id="afn-iQ-74B"/>
+            </connections>
+            <point key="canvasLocation" x="255.07246376811597" y="125.22321428571428"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
