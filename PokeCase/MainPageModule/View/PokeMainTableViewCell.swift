@@ -6,23 +6,47 @@
 //
 
 import UIKit
+import FirebaseRemoteConfig
 
 class PokeMainTableViewCell: UITableViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var pokeNameLabel: UILabel!
     
+    let remoteConfig = RemoteConfig.remoteConfig()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        containerView.backgroundColor = .purple
         containerView.layer.cornerRadius = 8
         pokeNameLabel.textColor = .white
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        fetchValue()
     }
     
+    func fetchValue(){
+        updateView(updateView: false)
+        
+        self.remoteConfig.fetch(withExpirationDuration: 0) { status, error in
+            if status == .success, error == nil {
+                self.remoteConfig.activate(completion: { _, error in
+                    guard error == nil else{
+                        return
+                    }
+                    let value = self.remoteConfig.configValue(forKey: "shows_new_ui").boolValue
+                    print("Fetched: \(value)")
+                    DispatchQueue.main.async {
+                        self.updateView(updateView: value)
+                    }
+                })
+            }else{
+                print("wrong something")
+            }
+        }
+    }
+    
+    func updateView(updateView: Bool){
+        if updateView{
+            containerView.backgroundColor = .blue
+        }else{
+            containerView.backgroundColor = .orange
+        }
+    }
 }

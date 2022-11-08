@@ -27,6 +27,10 @@
 		1E28515F2915B046001EE60F /* PokeApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28515E2915B046001EE60F /* PokeApi.swift */; };
 		1E2851622915B05D001EE60F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1E2851612915B05D001EE60F /* Alamofire */; };
 		1E2851672915B16A001EE60F /* PokemonVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2851662915B16A001EE60F /* PokemonVM.swift */; };
+		1EA3138C291A3A4300933E7D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1EA3138B291A3A4300933E7D /* FirebaseAnalytics */; };
+		1EA3138E291A3A4300933E7D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 1EA3138D291A3A4300933E7D /* FirebaseCrashlytics */; };
+		1EA31390291A3A4300933E7D /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 1EA3138F291A3A4300933E7D /* FirebaseRemoteConfig */; };
+		1EA31392291A3B9900933E7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EA31391291A3B9900933E7D /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,7 @@
 		1E28515C2915AFD5001EE60F /* PokemonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEntity.swift; sourceTree = "<group>"; };
 		1E28515E2915B046001EE60F /* PokeApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokeApi.swift; sourceTree = "<group>"; };
 		1E2851662915B16A001EE60F /* PokemonVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonVM.swift; sourceTree = "<group>"; };
+		1EA31391291A3B9900933E7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +63,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E10E9682915B9280045BB56 /* Kingfisher in Frameworks */,
+				1EA3138E291A3A4300933E7D /* FirebaseCrashlytics in Frameworks */,
 				1E2851622915B05D001EE60F /* Alamofire in Frameworks */,
+				1EA3138C291A3A4300933E7D /* FirebaseAnalytics in Frameworks */,
+				1EA31390291A3A4300933E7D /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +136,7 @@
 				1E2851432915A135001EE60F /* Assets.xcassets */,
 				1E2851452915A135001EE60F /* LaunchScreen.storyboard */,
 				1E2851482915A135001EE60F /* Info.plist */,
+				1EA31391291A3B9900933E7D /* GoogleService-Info.plist */,
 			);
 			path = PokeCase;
 			sourceTree = "<group>";
@@ -197,6 +206,7 @@
 				1E2851332915A134001EE60F /* Sources */,
 				1E2851342915A134001EE60F /* Frameworks */,
 				1E2851352915A134001EE60F /* Resources */,
+				1EA31393291A58A200933E7D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -206,6 +216,9 @@
 			packageProductDependencies = (
 				1E2851612915B05D001EE60F /* Alamofire */,
 				1E10E9672915B9280045BB56 /* Kingfisher */,
+				1EA3138B291A3A4300933E7D /* FirebaseAnalytics */,
+				1EA3138D291A3A4300933E7D /* FirebaseCrashlytics */,
+				1EA3138F291A3A4300933E7D /* FirebaseRemoteConfig */,
 			);
 			productName = PokeCase;
 			productReference = 1E2851372915A134001EE60F /* PokeCase.app */;
@@ -238,6 +251,7 @@
 			packageReferences = (
 				1E2851602915B05D001EE60F /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1E10E9662915B9280045BB56 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				1EA3138A291A3A4300933E7D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 1E2851382915A134001EE60F /* Products */;
 			projectDirPath = "";
@@ -259,10 +273,33 @@
 				1E10E9742915CCC70045BB56 /* DetailCollectionViewCell.xib in Resources */,
 				1E2851442915A135001EE60F /* Assets.xcassets in Resources */,
 				1E10E9702915BCF20045BB56 /* DetailVC.xib in Resources */,
+				1EA31392291A3B9900933E7D /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1EA31393291A58A200933E7D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1E2851332915A134001EE60F /* Sources */ = {
@@ -331,7 +368,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -506,6 +543,14 @@
 				kind = branch;
 			};
 		};
+		1EA3138A291A3A4300933E7D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -518,6 +563,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1E2851602915B05D001EE60F /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		1EA3138B291A3A4300933E7D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1EA3138A291A3A4300933E7D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		1EA3138D291A3A4300933E7D /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1EA3138A291A3A4300933E7D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		1EA3138F291A3A4300933E7D /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1EA3138A291A3A4300933E7D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

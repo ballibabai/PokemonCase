@@ -15,8 +15,7 @@ protocol PokeDetailProtocol: AnyObject {
 final class GetPokemonValue {
     weak var getPokemonDelegate: PokeDetailProtocol?
     var pokemon: Pokemon?
-  //  var photoString: String?
-   // var versions: PokemonEntity?
+ 
     //with alamofire
     func getVersionsPoke(_ urlString: String){
             let baseURL = URL(string: urlString)
@@ -26,7 +25,6 @@ final class GetPokemonValue {
             AF.request(request).response {response in
                // guard let self = self else {return}
                 
-                print(response)
                 guard let data = response.data else { return }
                 do {
                     print(data)
@@ -53,7 +51,6 @@ final class GetPokemonValue {
         let img3 = pokemon?.sprites.frontShiny
         let img4 = pokemon?.sprites.versions?.generationIi.crystal.frontDefault
         let img5 = pokemon?.sprites.versions?.generationIi.crystal.frontShiny
-        let img6 = pokemon?.sprites.versions?.generationIi.crystal.backDefault
 
         stringPhotos.append(img0!)
         stringPhotos.append(img1!)
@@ -61,7 +58,6 @@ final class GetPokemonValue {
         stringPhotos.append(img3!)
         stringPhotos.append(img4!)
         stringPhotos.append(img5!)
-        stringPhotos.append(img6!)
 
         
         return stringPhotos

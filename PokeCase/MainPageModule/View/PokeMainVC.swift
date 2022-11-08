@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class PokeMainVC: UIViewController {
     //MARK: - UI Elements
@@ -14,20 +15,17 @@ class PokeMainVC: UIViewController {
     //MARK: - Properties
     private let pokemonVM = PokemonViewModel()
     var allPoke = [AllPokemons]()
-    var currentPage = 1
     var perPage = 20
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         pokemonVM.didViewLoad()
         pokemonVM.pokemonVMDelegate = self
         setupUI()
     }
     
     //MARK: - Functions
-
 }
 
 //MARK: - Extensions
@@ -44,12 +42,9 @@ private extension PokeMainVC {
 }
 extension PokeMainVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let detailModel = GetPokemonValue()
-//        let destin = allPoke[indexPath.row].url
-//        print(destin)
-//        detailModel.getVersionsPoke(destin)
-//
-       let destinDetail = DetailVC(nibName: "DetailVC", bundle: nil)
+
+        Analytics.logEvent("Clicked Something", parameters: nil)
+        let destinDetail = DetailVC(nibName: "DetailVC", bundle: nil)
         let destin = allPoke[indexPath.row].url
         destinDetail.changePokemon(destin)
         self.navigationController?.pushViewController(destinDetail, animated: true)
@@ -64,6 +59,7 @@ extension PokeMainVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PokeMainTableViewCell") as! PokeMainTableViewCell
+    
         cell.pokeNameLabel.text = allPoke[indexPath.row].name
         return cell
     }
@@ -72,7 +68,7 @@ extension PokeMainVC: UITableViewDataSource {
         if indexPath.row == allPoke.count - 1 {
             if allPoke.count % perPage == 0 {
                 perPage += 20
-                var strPage = String(perPage)
+                let strPage = String(perPage)
                 let url = URL(string: "https://pokeapi.co/api/v2/pokemon/?offset=\(strPage)&limit=20")!
                  //moreData()
                 pokemonVM.deneme2(url)
@@ -89,7 +85,6 @@ extension PokeMainVC: PokemonViewModelProtocol {
         self.allPoke = poke
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            print("Success View")
         }
     }
 }

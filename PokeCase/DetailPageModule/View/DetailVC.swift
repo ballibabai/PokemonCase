@@ -9,6 +9,8 @@ import UIKit
 import Kingfisher
 
 class DetailVC: UIViewController {
+    
+    //MARK: - UI Elements
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var statsLabel: UILabel!
@@ -24,10 +26,12 @@ class DetailVC: UIViewController {
     @IBOutlet weak var specialDefenseValueLabel: UILabel!
     
     
+    //MARK: - Properties
     private let getPokemonVM = GetPokemonViewModel()
     var poke: Pokemon?
     var stringPokes = [String]()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,18 +39,18 @@ class DetailVC: UIViewController {
         setupUI()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        hpValueLabel.text = "0"
-//        attackValueLabel.text = "0"
-//        defenseValueLabel.text = "0"
-//        specialAttackValueLabel.text = "0"
-//        specialDefenseValueLabel.text = "0"
-//    }
-//
+    override func viewWillAppear(_ animated: Bool) {
+        hpValueLabel.text = "0"
+        attackValueLabel.text = "0"
+        defenseValueLabel.text = "0"
+        specialAttackValueLabel.text = "0"
+        specialDefenseValueLabel.text = "0"
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         guard let poke = poke else {
-            
+
             let alert = UIAlertController(title: "Error", message: "Wrong something", preferredStyle: .alert)
             let okButton = UIAlertAction(title: "OK", style: .cancel)
             alert.addAction(okButton)
@@ -61,11 +65,13 @@ class DetailVC: UIViewController {
         specialDefenseValueLabel.text = String((poke.stats[4].baseStat))
     }
     
+    //MARK: - Functions
     func changePokemon(_ urlString: String){
         getPokemonVM.didViewLoad(urlString)
     }
 }
 
+//MARK: - Extensions
 private extension DetailVC {
     func setupUI(){
         collectionView.delegate = self
@@ -90,8 +96,9 @@ extension DetailVC: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DetailCollectionViewCell", for: indexPath) as! DetailCollectionViewCell
        
-       let url = URL(string: stringPokes[indexPath.row])
-       cell.pokeImageView.kf.setImage(with: url)
+       let resourcess = ImageResource(downloadURL: URL(string: stringPokes[indexPath.row])!, cacheKey: stringPokes[indexPath.row]) //caching
+       //let url = URL(string: stringPokes[indexPath.row])
+       cell.pokeImageView.kf.setImage(with: resourcess)
         return cell
     }
 }
@@ -110,7 +117,6 @@ extension DetailVC: GetPokemonVMProtocol{
     func stringUrl(_ stringUrl: [String]) {
         self.stringPokes = stringUrl
     }
-    
     func getPokeArray(_ poke: Pokemon) {
         self.poke = poke
         DispatchQueue.main.async {
